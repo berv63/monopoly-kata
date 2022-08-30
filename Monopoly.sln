@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly.Accessors", "src\Monopoly.Accessors\Monopoly.Accessors.csproj", "{F0E3C903-1DAD-4D77-A0EF-A169C21B86C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly.Shared", "src\Monopoly.Shared\Monopoly.Shared.csproj", "{F1F1BB7E-9396-42EE-BFB9-319F11D3083D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly.Engines", "src\Monopoly.Engines\Monopoly.Engines.csproj", "{7AF996B4-C7CD-40AF-8091-6BE40FB525FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly.Managers", "src\Monopoly.Managers\Monopoly.Managers.csproj", "{A0D3E1A6-0568-4272-B847-D6B1B724E07A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly.Tests", "test\Monopoly.Tests\Monopoly.Tests.csproj", "{9F529047-F73F-4E5F-AD82-4E1E329F4F2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{60706187-8B99-4D11-9F9E-9A0B2727F9B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C6976AB7-2136-4D57-B2E3-86E7CC1976ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0E3C903-1DAD-4D77-A0EF-A169C21B86C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0E3C903-1DAD-4D77-A0EF-A169C21B86C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0E3C903-1DAD-4D77-A0EF-A169C21B86C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0E3C903-1DAD-4D77-A0EF-A169C21B86C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F1BB7E-9396-42EE-BFB9-319F11D3083D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F1BB7E-9396-42EE-BFB9-319F11D3083D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F1BB7E-9396-42EE-BFB9-319F11D3083D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F1BB7E-9396-42EE-BFB9-319F11D3083D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF996B4-C7CD-40AF-8091-6BE40FB525FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF996B4-C7CD-40AF-8091-6BE40FB525FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF996B4-C7CD-40AF-8091-6BE40FB525FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF996B4-C7CD-40AF-8091-6BE40FB525FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0D3E1A6-0568-4272-B847-D6B1B724E07A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D3E1A6-0568-4272-B847-D6B1B724E07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D3E1A6-0568-4272-B847-D6B1B724E07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D3E1A6-0568-4272-B847-D6B1B724E07A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F529047-F73F-4E5F-AD82-4E1E329F4F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F529047-F73F-4E5F-AD82-4E1E329F4F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F529047-F73F-4E5F-AD82-4E1E329F4F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F529047-F73F-4E5F-AD82-4E1E329F4F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32FA05FB-0C39-43F9-842E-B210C6E25887}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F0E3C903-1DAD-4D77-A0EF-A169C21B86C2} = {60706187-8B99-4D11-9F9E-9A0B2727F9B6}
+		{7AF996B4-C7CD-40AF-8091-6BE40FB525FA} = {60706187-8B99-4D11-9F9E-9A0B2727F9B6}
+		{A0D3E1A6-0568-4272-B847-D6B1B724E07A} = {60706187-8B99-4D11-9F9E-9A0B2727F9B6}
+		{F1F1BB7E-9396-42EE-BFB9-319F11D3083D} = {60706187-8B99-4D11-9F9E-9A0B2727F9B6}
+		{9F529047-F73F-4E5F-AD82-4E1E329F4F2F} = {C6976AB7-2136-4D57-B2E3-86E7CC1976ED}
+	EndGlobalSection
+EndGlobal
