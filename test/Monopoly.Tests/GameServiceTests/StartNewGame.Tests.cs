@@ -62,20 +62,5 @@ namespace Monopoly.Tests.GameServiceTests
             _monopolyAccessorMock.VerifySaveNotCalled();
         }
         
-        
-        //Client assert
-        [Test]
-        public async Task Retain_ClientAssert()
-        {
-            //Arrange
-            var response = new HttpResponseMessage(HttpStatusCode.BadRequest);
-            response.Content = new StringContent("Unable to start game with 1 player.");
-            var request = _mockHandler.When("https://test.monopoly.com/game").Respond(_ => response);
-
-            //Act
-            await GameManager.StartNewGame(1);
-            
-            //Assert
-        }
     }
 }
