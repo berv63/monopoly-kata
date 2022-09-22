@@ -1,7 +1,7 @@
 # Monopoly TDD Kata
 
 ## iDesign https://www.idesign.net/
-This kata code infrastructure follows the iDesign architecture pattern. However, it is not a strict iDesign application following all the directives of iDesign.
+This kata code infrastructure follows the iDesign architecture pattern. However, it is not a strict iDesign application following all the directives of iDesign. The following are the main directives we will be looking at with this application:
 
 1. Decompose based on volatility
 2. Design iteratively, build incrementally
