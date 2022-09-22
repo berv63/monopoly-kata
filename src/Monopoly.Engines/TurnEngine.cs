@@ -18,15 +18,15 @@ namespace Monopoly.Engines
             _configuration = configuration;
         }
 
-        public void UpdatePlayerLocation(BoardState boardState, DiceRoll diceRoll)
+        public LocationEnum GetPlayerNewLocation(BoardState boardState, DiceRoll diceRoll)
         {
             var currentPlayer = boardState.Players.First(x => x.PlayerNumber == boardState.PlayerTurn);
-            currentPlayer.CurrentLocation = (LocationEnum)(((int)currentPlayer.CurrentLocation + diceRoll.DieRoll1 + diceRoll.DieRoll2) % 40);
+            return (LocationEnum)(((int)currentPlayer.CurrentLocation + diceRoll.DieRoll1 + diceRoll.DieRoll2) % 40);
         }
 
-        public void UpdatePlayerTurn(BoardState boardState)
+        public int GetNextPlayerTurn(BoardState boardState)
         {
-            boardState.PlayerTurn = (boardState.PlayerTurn) % (boardState.Players.Count) + 1;
+            return (boardState.PlayerTurn) % (boardState.Players.Count) + 1;
         }
     }
 }
