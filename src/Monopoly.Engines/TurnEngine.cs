@@ -18,9 +18,13 @@ namespace Monopoly.Engines
             _configuration = configuration;
         }
 
-        public LocationEnum GetPlayerNewLocation(BoardState boardState, DiceRoll diceRoll)
+        public Player GetCurrentPlayer(BoardState boardState)
         {
-            var currentPlayer = boardState.Players.First(x => x.PlayerNumber == boardState.PlayerTurn);
+            return boardState.Players.First(x => x.PlayerNumber == boardState.PlayerTurn);
+        }
+
+        public LocationEnum GetPlayerNewLocation(Player currentPlayer, DiceRoll diceRoll)
+        {
             return (LocationEnum)(((int)currentPlayer.CurrentLocation + diceRoll.DieRoll1 + diceRoll.DieRoll2) % 40);
         }
 

@@ -30,7 +30,7 @@ namespace Monopoly.Managers
                 return boardStateRequest.BoardState;
             }
 
-            throw new InvalidOperationException("Invalid Player Count");
+            return null;
         }
     }
 }
