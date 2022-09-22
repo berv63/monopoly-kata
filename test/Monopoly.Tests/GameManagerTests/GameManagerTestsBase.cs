@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net.Http;
 using Microsoft.Extensions.Logging;
-using Monopoly.Accessors;
 using Monopoly.Accessors.Interfaces;
 using Monopoly.Engines;
 using Monopoly.Engines.Interfaces;
@@ -11,9 +10,9 @@ using Moq;
 using NUnit.Framework;
 using RichardSzalay.MockHttp;
 
-namespace Monopoly.Tests.GameServiceTests
+namespace Monopoly.Tests.GameManagerTests
 {
-    public class GameServiceTestsBase
+    public class GameManagerTestsBase
     {
         protected MockHttpMessageHandler _mockHandler;
         protected Mock<IHttpClientFactory> _mockHttpClientFactory;

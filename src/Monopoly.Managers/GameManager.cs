@@ -1,6 +1,8 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Monopoly.Accessors.Interfaces;
+using Monopoly.Accessors.Models;
 using Monopoly.Engines.Interfaces;
 using Monopoly.Managers.Interfaces;
 
@@ -19,13 +21,16 @@ namespace Monopoly.Managers
             _monopolyAccessor = monopolyAccessor;
         }
 
-        public async Task StartNewGame(int playerCount)
+        public async Task<BoardState> StartNewGame(int playerCount)
         {
             if (playerCount >= 2 && playerCount <= 8)
             {
-                var boardState = _boardEngine.CreateNewGame(playerCount);
-                await _monopolyAccessor.SaveBoardState(boardState);
+                var boardStateRequest = _boardEngine.CreateNewGame(playerCount);
+                await _monopolyAccessor.SaveBoardState(boardStateRequest);
+                return boardStateRequest.BoardState;
             }
+
+            throw new InvalidOperationException("Invalid Player Count");
         }
     }
 }

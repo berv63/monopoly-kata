@@ -1,27 +1,14 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Monopoly.Accessors.Models;
 using Monopoly.Tests.TestHelpers;
 using Moq;
 using NUnit.Framework;
 
-namespace Monopoly.Tests.TurnServiceTests
+namespace Monopoly.Tests.TurnManagerTests
 {
-    public class TakePlayerTurnTests : TurnServiceTestsBase
+    public class TakePlayerTurnTests : TurnManagerTestsBase
     {
-        [Test]
-        public async Task TakeTurn_GetsBoardState()
-        {
-            //Arrange
-            var boardState = BoardStateHelpers.GetNewBoardState();
-            _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
-
-            //Act
-            await TurnManager.TakePlayerTurn(TestConstants.GameId);
-            
-            //Assert
-            _monopolyRepositoryMock.Verify(x => x.GetBoardState(TestConstants.GameId), Times.Once);
-        }
-        
         //player advances
         [Test]
         public async Task TakeTurn_NewGame_PlayerAdvances_Normal()
@@ -32,10 +19,11 @@ namespace Monopoly.Tests.TurnServiceTests
             _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
 
             //Act
-            await TurnManager.TakePlayerTurn(TestConstants.GameId);
+            var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
             
             //Assert
-            _monopolyRepositoryMock.VerifyNotPlayerLocation(1, LocationEnum.Go);
+            _monopolyRepositoryMock.VerifySaveNotPlayerLocation(1, LocationEnum.Go);
+            Assert.AreNotEqual(LocationEnum.Go, result.Players.First(x => x.PlayerNumber == 1).CurrentLocation);
         }
         
         [Test]
@@ -47,10 +35,11 @@ namespace Monopoly.Tests.TurnServiceTests
             _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
 
             //Act
-            await TurnManager.TakePlayerTurn(TestConstants.GameId);
+            var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
             
             //Assert
-            _monopolyRepositoryMock.VerifyNotPlayerLocation(1, LocationEnum.Boardwalk);
+            _monopolyRepositoryMock.VerifySaveNotPlayerLocation(1, LocationEnum.Boardwalk);
+            Assert.AreNotEqual(LocationEnum.Boardwalk, result.Players.First(x => x.PlayerNumber == 1).CurrentLocation);
         }
         
         //player turn change
@@ -63,10 +52,11 @@ namespace Monopoly.Tests.TurnServiceTests
             _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
             
             //Act
-            await TurnManager.TakePlayerTurn(TestConstants.GameId);
+            var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
             
             //Assert
-            _monopolyRepositoryMock.VerifyPlayerTurn(2);
+            _monopolyRepositoryMock.VerifySavePlayerTurn(2);
+            Assert.AreEqual(2, result.PlayerTurn);
         }
         
         [Test]
@@ -78,10 +68,11 @@ namespace Monopoly.Tests.TurnServiceTests
             _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
                 
             //Act
-            await TurnManager.TakePlayerTurn(TestConstants.GameId);
+            var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
             
             //Assert
-            _monopolyRepositoryMock.VerifyPlayerTurn(1);
+            _monopolyRepositoryMock.VerifySavePlayerTurn(1);
+            Assert.AreEqual(1, result.PlayerTurn);
         }
     }
 }

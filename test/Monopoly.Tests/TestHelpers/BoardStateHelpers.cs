@@ -36,7 +36,7 @@ namespace Monopoly.Tests.TestHelpers
             accessorMock.Verify(x => x.SaveBoardState(It.IsAny<SaveBoardStateRequest>()), Times.Never);
         }
         
-        public static void VerifyNewGame(this Mock<IMonopolyAccessor> accessorMock, int playerCount)
+        public static void VerifySaveNewGame(this Mock<IMonopolyAccessor> accessorMock, int playerCount)
         {
             accessorMock.Verify(x => x.SaveBoardState(It.Is<SaveBoardStateRequest>(y => 
                 y.GameId == null &&
@@ -49,12 +49,12 @@ namespace Monopoly.Tests.TestHelpers
             )), Times.Once);
         }
         
-        public static void VerifyPlayerTurn(this Mock<IMonopolyAccessor> accessorMock, int playerNumber)
+        public static void VerifySavePlayerTurn(this Mock<IMonopolyAccessor> accessorMock, int playerNumber)
         {
             accessorMock.Verify(x => x.SaveBoardState(It.Is<SaveBoardStateRequest>(y => y.BoardState.PlayerTurn == playerNumber)), Times.Once);
         }
         
-        public static void VerifyNotPlayerLocation(this Mock<IMonopolyAccessor> accessorMock, int playerNumber, LocationEnum previousPlayerLocation)
+        public static void VerifySaveNotPlayerLocation(this Mock<IMonopolyAccessor> accessorMock, int playerNumber, LocationEnum previousPlayerLocation)
         {
             accessorMock.Verify(x => x.SaveBoardState(It.Is<SaveBoardStateRequest>(y => y.BoardState.Players.First(z => z.PlayerNumber == playerNumber).CurrentLocation != previousPlayerLocation)), Times.Once);
         }

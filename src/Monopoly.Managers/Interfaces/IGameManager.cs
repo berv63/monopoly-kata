@@ -6,6 +6,6 @@ namespace Monopoly.Managers.Interfaces
 {
     public interface IGameManager
     {
-        Task StartNewGame(int playerCount);
+        Task<BoardState> StartNewGame(int playerCount);
     }
 }

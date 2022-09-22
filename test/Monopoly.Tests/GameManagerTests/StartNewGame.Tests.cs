@@ -1,14 +1,10 @@
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Monopoly.Tests.TestHelpers;
 using NUnit.Framework;
-using RichardSzalay.MockHttp;
 
-namespace Monopoly.Tests.GameServiceTests
+namespace Monopoly.Tests.GameManagerTests
 {
-    public class StartNewGameTests : GameServiceTestsBase
+    public class StartNewGameTests : GameManagerTestsBase
     {
         [Test]
         public async Task OnePlayer_NoSave()
@@ -33,7 +29,7 @@ namespace Monopoly.Tests.GameServiceTests
             await GameManager.StartNewGame(playerCount);
             
             //Assert
-            _monopolyAccessorMock.VerifyNewGame(playerCount);
+            _monopolyAccessorMock.VerifySaveNewGame(playerCount);
         }
         
         [Test]
@@ -46,7 +42,7 @@ namespace Monopoly.Tests.GameServiceTests
             await GameManager.StartNewGame(playerCount);
             
             //Assert
-            _monopolyAccessorMock.VerifyNewGame(playerCount);
+            _monopolyAccessorMock.VerifySaveNewGame(playerCount);
         }
         
         [Test]

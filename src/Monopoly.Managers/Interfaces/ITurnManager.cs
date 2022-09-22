@@ -6,6 +6,6 @@ namespace Monopoly.Managers.Interfaces
 {
     public interface ITurnManager
     {
-        Task TakePlayerTurn(int gameId);
+        Task<BoardState> TakePlayerTurn(int gameId);
     }
 }
