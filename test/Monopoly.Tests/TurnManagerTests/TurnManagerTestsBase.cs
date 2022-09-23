@@ -5,6 +5,7 @@ using Monopoly.Engines.Interfaces;
 using Monopoly.Managers;
 using Monopoly.Managers.Interfaces;
 using Monopoly.Shared.Configuration;
+using Monopoly.Shared.Enums;
 using Moq;
 using NUnit.Framework;
 
@@ -17,7 +18,7 @@ namespace Monopoly.Tests.TurnManagerTests
         protected Mock<IMonopolyAccessor> _monopolyRepositoryMock;
 
         protected Mock<ILogger<RollEngine>> _rollEngineLoggerMock;
-        protected IRollEngine _rollEngine;
+        protected Mock<IRollEngine> _rollEngineMock;
         
         protected Mock<ILogger<TurnEngine>> _turnEngineLoggerMock;
         protected ITurnEngine _turnEngine;
@@ -32,14 +33,19 @@ namespace Monopoly.Tests.TurnManagerTests
             _monopolyRepositoryMock = new Mock<IMonopolyAccessor>();
             
             _rollEngineLoggerMock = new Mock<ILogger<RollEngine>>();
-            _rollEngine = new RollEngine(_rollEngineLoggerMock.Object, _config);
+            _rollEngineMock = new Mock<IRollEngine>();
             
             _turnEngineLoggerMock = new Mock<ILogger<TurnEngine>>();
             _turnEngine = new TurnEngine(_turnEngineLoggerMock.Object, _config);
             
             _managerLoggerMock = new Mock<ILogger<TurnManager>>();
             
-            TurnManager = new TurnManager(_managerLoggerMock.Object, _rollEngine, _turnEngine, _monopolyRepositoryMock.Object);
+            TurnManager = new TurnManager(_managerLoggerMock.Object, _rollEngineMock.Object, _turnEngine, _monopolyRepositoryMock.Object);
+        }
+
+        protected void SetupRollDice(int roll1, int roll2)
+        {
+            _rollEngineMock.Setup(x => x.RollDice()).Returns(new DiceRoll {DieRoll1 = roll1, DieRoll2 = roll2});
         }
     }
 }

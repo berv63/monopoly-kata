@@ -17,13 +17,14 @@ namespace Monopoly.Tests.TurnManagerTests
             var boardState = BoardStateHelpers.GetNewBoardState();
             boardState.Players[0].CurrentLocation = LocationEnum.Go;
             _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
-
+            SetupRollDice(2, 3);
+            
             //Act
             var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
             
             //Assert
             _monopolyRepositoryMock.VerifySaveNotPlayerLocation(1, LocationEnum.Go);
-            Assert.AreNotEqual(LocationEnum.Go, result.Players.First(x => x.PlayerNumber == 1).CurrentLocation);
+            Assert.AreEqual(LocationEnum.ReadingRailroad, result.Players.First(x => x.PlayerNumber == 1).CurrentLocation);
         }
         
         [Test]
@@ -33,7 +34,8 @@ namespace Monopoly.Tests.TurnManagerTests
             var boardState = BoardStateHelpers.GetNewBoardState();
             boardState.Players[0].CurrentLocation = LocationEnum.Boardwalk;
             _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
-
+            SetupRollDice(2, 3);
+            
             //Act
             var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
             
@@ -50,6 +52,7 @@ namespace Monopoly.Tests.TurnManagerTests
             var boardState = BoardStateHelpers.GetNewBoardState();
             boardState.PlayerTurn = 1;
             _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
+            SetupRollDice(2, 3);
             
             //Act
             var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
@@ -66,6 +69,7 @@ namespace Monopoly.Tests.TurnManagerTests
             var boardState = BoardStateHelpers.GetNewBoardState();
             boardState.PlayerTurn = 2;
             _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
+            SetupRollDice(2, 3);
                 
             //Act
             var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
