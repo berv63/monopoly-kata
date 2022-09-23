@@ -1,7 +1,7 @@
 # Monopoly TDD Kata
 
-## iDesign https://www.idesign.net/
-This kata code infrastructure follows the iDesign architecture pattern. However, it is not a strict iDesign application following all the directives of iDesign. The following are the main directives we will be looking at with this application:
+## IDesign https://www.idesign.net/
+This kata code infrastructure follows the IDesign architecture pattern. However, it is not a strict IDesign application following all the directives of IDesign. The following are the main directives we will be looking at with this application:
 
 1. Decompose based on volatility
 2. Design iteratively, build incrementally
@@ -38,5 +38,5 @@ Managers are the entry point into the business logic of the application (non-UI/
 
 Managers should control when to update the state. You should not be afraid of unintended side affects of calling an engine. If an engine calls an accessor method it should only be to retrieve data, never to save.  
 
-## TDD and iDesign
-With c# specifically iDesign helps the TDD process by giving you logical places to mock your system boundaries. Usually you would want to mock at the HTTPClient level. But the reusable nature of the Accessors allows you to test them alone to the point where you know the only outcomes are tested, and then in the rest of the system you can mock those outcomes. Also if you find that you have pieces of your code that rely on untestable business logic (random elements) you can put those in their own engine and mock that method.
+## TDD and IDesign
+With c# specifically IDesign helps the TDD process by giving you logical places to mock your system boundaries. Usually you would want to mock at the HTTPClient level. But the reusable nature of the Accessors allows you to test them alone to the point where you know the only outcomes are tested, and then in the rest of the system you can mock those outcomes. Also if you find that you have pieces of your code that rely on untestable business logic (random elements) you can put those in their own engine and mock that method.
