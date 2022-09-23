@@ -24,8 +24,7 @@ Engines are where the business logic lies. This is to separate the flow of the a
 
 Roll Dice Example:
 - Roll Dice 1 = math.rand(1-6)
-- Roll Dice 2 = math.ran(1-6)
-- Return r1 + r2
+- Roll Dice 2 = math.rand(1-6)
 
 ### Accessors
 Accessors are used to separate out the data storage and general data access from the rest of the application. API calls, DB calls, Redis management, etc is typically done at the Accessor level. This is done for a few reasons. The volatility of the Accessors is very low. It's unlikely that in the course of a new application that an entire db set will be swapped out for a text file (for example). But in the event that it is in can be overhauled without affecting the remainder of the system. Also, accessors should be built in such a way that they are re-usable. If a DB/API change is required you know exactly where to look...The Accessor 
