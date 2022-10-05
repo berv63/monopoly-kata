@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Microsoft.Extensions.Logging;
 using Monopoly.Accessors.Models;
 using Monopoly.Engines.Interfaces;
@@ -28,7 +28,17 @@ namespace Monopoly.Engines
             return (LocationEnum)(((int)currentPlayer.CurrentLocation + diceRoll.DieRoll1 + diceRoll.DieRoll2) % 40);
         }
 
-        public int GetNextPlayerTurn(BoardState boardState)
+        public int GetNextPlayerTurn(BoardState boardState, DiceRoll diceRoll)
+        {
+            if (diceRoll.DidRolledDoubles())
+            {
+                return boardState.PlayerTurn;
+            }
+
+            return GetNextPlayerInTurnOrder(boardState);
+        }
+
+        private int GetNextPlayerInTurnOrder(BoardState boardState)
         {
             return (boardState.PlayerTurn) % (boardState.Players.Count) + 1;
         }

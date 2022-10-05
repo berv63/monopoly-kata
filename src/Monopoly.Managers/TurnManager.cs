@@ -38,7 +38,7 @@ namespace Monopoly.Managers
             //Take location action
             //todo: determine action
             
-            boardState.PlayerTurn = _turnEngine.GetNextPlayerTurn(boardState);
+            boardState.PlayerTurn = _turnEngine.GetNextPlayerTurn(boardState, diceRoll);
             
             var stateRequest = new SaveBoardStateRequest
             {

@@ -78,5 +78,22 @@ namespace Monopoly.Tests.TurnManagerTests
             _monopolyRepositoryMock.VerifySavePlayerTurn(1);
             Assert.AreEqual(1, result.PlayerTurn);
         }
+
+        [Test]
+        public async Task TakeTurn_FirstPlayer_RollsDoubles_GoesAgain()
+        {
+            //Arrange
+            var boardState = BoardStateHelpers.GetNewBoardState();
+            boardState.PlayerTurn = 1;
+            _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
+            SetupRollDice(1, 1);
+                
+            //Act
+            var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
+            
+            //Assert
+            //_monopolyRepositoryMock.VerifySavePlayerTurn(1);
+            Assert.AreEqual(1, result.PlayerTurn);
+        }
     }
 }
