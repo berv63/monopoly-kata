@@ -92,7 +92,6 @@ namespace Monopoly.Tests.TurnManagerTests
             var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
             
             //Assert
-            //_monopolyRepositoryMock.VerifySavePlayerTurn(1);
             Assert.AreEqual(1, result.PlayerTurn);
         }
 
@@ -111,7 +110,6 @@ namespace Monopoly.Tests.TurnManagerTests
             var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
             
             //Assert
-            //_monopolyRepositoryMock.VerifySavePlayerTurn(1);
             Assert.AreEqual(true, result.Players[0].IsInJail);
             Assert.AreEqual(LocationEnum.Jail, boardState.Players[0].CurrentLocation);
         }
