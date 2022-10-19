@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Monopoly.Accessors.Interfaces;
 using Monopoly.Engines;
 using Monopoly.Engines.Interfaces;
