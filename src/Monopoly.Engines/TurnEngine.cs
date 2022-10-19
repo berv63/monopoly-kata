@@ -25,6 +25,12 @@ namespace Monopoly.Engines
 
         public LocationEnum GetPlayerNewLocation(Player currentPlayer, DiceRoll diceRoll)
         {
+
+            if (currentPlayer.IsInJail && !diceRoll.DidRolledDoubles()) 
+            {
+                return LocationEnum.Jail;
+            }
+
             return (LocationEnum)(((int)currentPlayer.CurrentLocation + diceRoll.DieRoll1 + diceRoll.DieRoll2) % 40);
         }
 

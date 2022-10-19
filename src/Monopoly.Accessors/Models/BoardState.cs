@@ -18,16 +18,16 @@ namespace Monopoly.Accessors.Models
         
         //location status
         public LocationEnum CurrentLocation { get; set; } = LocationEnum.Go;
-        /*public List<Location> OwnedLocations { get; set; }
+        // public List<Location> OwnedLocations { get; set; }
         public bool IsInJail { get; set; }
         
         //roll status
-        public int ConsecutiveDoublesRolls { get; set; }
-        public int ConsecutiveJailRolls { get; set; }
+        // public int ConsecutiveDoublesRolls { get; set; }
+        // public int ConsecutiveJailRolls { get; set; }
         
-        //card status
-        public List<ChanceCard> OwnedChanceCards { get; set; }
-        public List<CommunityChestCard> OwnedCommunityChestCards { get; set; }*/
+        // //card status
+        // public List<ChanceCard> OwnedChanceCards { get; set; }
+        // public List<CommunityChestCard> OwnedCommunityChestCards { get; set; }
     }
 
     public class Location

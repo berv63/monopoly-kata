@@ -95,5 +95,25 @@ namespace Monopoly.Tests.TurnManagerTests
             //_monopolyRepositoryMock.VerifySavePlayerTurn(1);
             Assert.AreEqual(1, result.PlayerTurn);
         }
+
+        [Test]
+        public async Task TakeTurn_FirstPlayerInJail_DoesntRollDoubles_StaysInJail()
+        {
+            //Arrange
+            var boardState = BoardStateHelpers.GetNewBoardState();
+            boardState.PlayerTurn = 1;
+            boardState.Players[0].IsInJail = true;
+            boardState.Players[0].CurrentLocation = LocationEnum.Jail;
+            _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
+            SetupRollDice(1, 2);
+                
+            //Act
+            var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
+            
+            //Assert
+            //_monopolyRepositoryMock.VerifySavePlayerTurn(1);
+            Assert.AreEqual(true, result.Players[0].IsInJail);
+            Assert.AreEqual(LocationEnum.Jail, boardState.Players[0].CurrentLocation);
+        }
     }
 }
