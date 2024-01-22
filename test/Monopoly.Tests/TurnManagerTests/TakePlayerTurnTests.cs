@@ -42,6 +42,7 @@ namespace Monopoly.Tests.TurnManagerTests
             //Assert
             _monopolyRepositoryMock.VerifySaveNotPlayerLocation(1, LocationEnum.Boardwalk);
             Assert.AreNotEqual(LocationEnum.Boardwalk, result.Players.First(x => x.PlayerNumber == 1).CurrentLocation);
+            Assert.AreEqual(LocationEnum.IncomeTax, result.Players.First(x => x.PlayerNumber == 1).CurrentLocation);
         }
         
         //player turn change
@@ -76,6 +77,22 @@ namespace Monopoly.Tests.TurnManagerTests
             
             //Assert
             _monopolyRepositoryMock.VerifySavePlayerTurn(1);
+            Assert.AreEqual(1, result.PlayerTurn);
+        }
+        
+        [Test]
+        public async Task TakeTurn_FirstPlayer_RollsDoubles_FirstPlayerTurnAgain()
+        {
+            //Arrange
+            var boardState = BoardStateHelpers.GetNewBoardState();
+            boardState.PlayerTurn = 1;
+            _monopolyRepositoryMock.Setup(x => x.GetBoardState(TestConstants.GameId)).ReturnsAsync(boardState);
+            SetupRollDice(2, 2);
+                
+            //Act
+            var result = await TurnManager.TakePlayerTurn(TestConstants.GameId);
+            
+            //Assert
             Assert.AreEqual(1, result.PlayerTurn);
         }
     }
