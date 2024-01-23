@@ -22,4 +22,5 @@
       <ProjectReference Include="..\..\src\Monopoly.Shared\Monopoly.Shared.csproj" />
     </ItemGroup>
 
+
 </Project>

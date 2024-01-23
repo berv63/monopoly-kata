@@ -28,13 +28,8 @@ namespace Monopoly.Engines
             return (LocationEnum)(((int)currentPlayer.CurrentLocation + diceRoll.DieRoll1 + diceRoll.DieRoll2) % 40);
         }
 
-        public int GetNextPlayerTurn(BoardState boardState, DiceRoll diceRoll)
+        public int GetNextPlayerTurn(BoardState boardState)
         {
-            if (diceRoll.IsDoubles)
-            {
-                return boardState.PlayerTurn;
-            }
-            
             return GetNextPlayerInTurnOrder(boardState);
         }
 
