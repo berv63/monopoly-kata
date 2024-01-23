@@ -30,11 +30,6 @@ namespace Monopoly.Engines
 
         public int GetNextPlayerTurn(BoardState boardState)
         {
-            return GetNextPlayerInTurnOrder(boardState);
-        }
-
-        private int GetNextPlayerInTurnOrder(BoardState boardState)
-        {
             return (boardState.PlayerTurn) % (boardState.Players.Count) + 1;
         }
     }
